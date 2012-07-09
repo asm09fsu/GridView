@@ -129,30 +129,30 @@
 // --------- Insert Object with No Animation
 
 - (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point error:(NSError **)error {
-    return [self insertObject:object atPoint:point withAnimation:GridAnimationNone andWithAnimationDuration:0.0 error:error];
+    return [self insertObject:object atPoint:point withAnimation:GVAnimationNone andWithAnimationDuration:0.0 error:error];
 }
 
 - (BOOL)insertObjectAtRandomPoint:(UIView *)object error:(NSError **)error {
-    return [self insertObject:object atPoint:[self randomAvailablePoint] withAnimation:GridAnimationNone andWithAnimationDuration:defaultDuration error:error];
+    return [self insertObject:object atPoint:[self randomAvailablePoint] withAnimation:GVAnimationNone andWithAnimationDuration:defaultDuration error:error];
 }
 
 // --------- Insert Object with Animation and Default Duration
 
-- (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point withAnimation:(GridEnterAnimation)animation  error:(NSError **)error {
+- (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point withAnimation:(GVEnterAnimation)animation  error:(NSError **)error {
     return [self insertObject:object atPoint:point withAnimation:animation andWithAnimationDuration:defaultDuration error:error];
 }
 
-- (BOOL)insertObjectAtRandomPoint:(UIView *)object withAnimation:(GridEnterAnimation)animation error:(NSError **)error {
+- (BOOL)insertObjectAtRandomPoint:(UIView *)object withAnimation:(GVEnterAnimation)animation error:(NSError **)error {
     return [self insertObject:object atPoint:[self randomAvailablePoint] withAnimation:animation andWithAnimationDuration:defaultDuration error:error];
 }
 
 // --------- Insert Object with Animation and Custom Duration
 
-- (BOOL)insertObjectAtRandomPoint:(UIView *)object withAnimation:(GridEnterAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error {
+- (BOOL)insertObjectAtRandomPoint:(UIView *)object withAnimation:(GVEnterAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error {
     return [self insertObject:object atPoint:[self randomAvailablePoint] withAnimation:animation andWithAnimationDuration:duration error:error];
 }
 
-- (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point withAnimation:(GridEnterAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error {
+- (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point withAnimation:(GVEnterAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error {
     NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
     if (point.x > (_numberX - 1) || point.y > (_numberY - 1) || point.x <= -1 || point.y <= -1) {
         [errorDetail setValue:@"Point is out of range, or the Grid is full" forKey:NSLocalizedDescriptionKey];
@@ -169,35 +169,35 @@
         object.frame = CGRectMake(0, 0, determinedBlockSize.width, determinedBlockSize.height);
     }
     CGRect screen = [[UIScreen mainScreen] bounds];
-    if (animation == GridAnimationRandom) {
+    if (animation == GVAnimationRandom) {
         animation = arc4random_uniform(numberOfEnterAnimations);
     }
     switch (animation) {
-        case GridAnimationNone: {
+        case GVAnimationNone: {
             object.frame = CGRectMake(((_remainingSizeX / 2) + (point.x * object.frame.size.width)), ((_remainingSizeY / 2) + (point.y * object.frame.size.height)), object.frame.size.width, object.frame.size.height);
             break;
-        } case GridAnimationEnterFromLeft: {
+        } case GVAnimationEnterFromLeft: {
             object.frame = CGRectMake(-1, ((_remainingSizeY / 2) + (point.y * object.frame.size.height)), object.frame.size.width, object.frame.size.height);
             break;
-        } case GridAnimationEnterFromRight: {
+        } case GVAnimationEnterFromRight: {
             object.frame = CGRectMake(screen.size.width+1, ((_remainingSizeY / 2) + (point.y * object.frame.size.height)), object.frame.size.width, object.frame.size.height);
             break;
-        } case GridAnimationEnterFromBelow: {
+        } case GVAnimationEnterFromBelow: {
             object.frame = CGRectMake(((_remainingSizeX / 2) + (point.x * object.frame.size.width)), screen.size.height+1, object.frame.size.width, object.frame.size.height);
             break;
-        } case GridAnimationEnterFromAbove: {
+        } case GVAnimationEnterFromAbove: {
             object.frame = CGRectMake(((_remainingSizeX / 2) + (point.x * object.frame.size.width)), -1, object.frame.size.width, object.frame.size.height);
             break;
-        } case GridAnimationEnterFromBottomLeft: {
+        } case GVAnimationEnterFromBottomLeft: {
             object.frame = CGRectMake(-1, screen.size.height+1, object.frame.size.width, object.frame.size.height);
             break;
-        } case GridAnimationEnterFromBottonRight: {
+        } case GVAnimationEnterFromBottonRight: {
             object.frame = CGRectMake(screen.size.width+1, screen.size.height+1, object.frame.size.width, object.frame.size.height);
             break;
-        } case GridAnimationEnterFromTopLeft: {
+        } case GVAnimationEnterFromTopLeft: {
             object.frame = CGRectMake(-1, -1, object.frame.size.width, object.frame.size.height);
             break;
-        } case GridAnimationEnterFromTopRight: {
+        } case GVAnimationEnterFromTopRight: {
             object.frame = CGRectMake(screen.size.width+1, -1, object.frame.size.width, object.frame.size.height);
             break;
         }
@@ -213,30 +213,30 @@
 // --------- Remove Object with No Animation
 
 - (BOOL)removeObjectAtPoint:(CGPoint)point error:(NSError **)error {
-    return [self removeObjectAtPoint:point withAnimation:GridAnimationNone andWithAnimationDuration:0.0 error:error];
+    return [self removeObjectAtPoint:point withAnimation:GVAnimationNone andWithAnimationDuration:0.0 error:error];
 }
 
 - (BOOL)removeObjectAtRandomPoint:(NSError **)error {
-    return [self removeObjectAtPoint:[self randomTakenPoint] withAnimation:GridAnimationNone andWithAnimationDuration:defaultDuration error:error];
+    return [self removeObjectAtPoint:[self randomTakenPoint] withAnimation:GVAnimationNone andWithAnimationDuration:defaultDuration error:error];
 }
 
 // --------- Remove Object with Animation and Default Duration
 
-- (BOOL)removeObjectAtPoint:(CGPoint)point withAnimation:(GridExitAnimation)animation error:(NSError **)error {
+- (BOOL)removeObjectAtPoint:(CGPoint)point withAnimation:(GVExitAnimation)animation error:(NSError **)error {
     return [self removeObjectAtPoint:point withAnimation:animation andWithAnimationDuration:defaultDuration error:error];
 }
 
-- (BOOL)removeObjectAtRandomPointWithAnimation:(GridEnterAnimation)animation error:(NSError **)error {
+- (BOOL)removeObjectAtRandomPointWithAnimation:(GVExitAnimation)animation error:(NSError **)error {
     return [self removeObjectAtPoint:[self randomTakenPoint] withAnimation:animation andWithAnimationDuration:defaultDuration error:error];
 }
 
 // --------- Remove Object with Animation and Custom Duration
 
-- (BOOL)removeObjectAtRandomPointWithAnimation:(GridEnterAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error {
+- (BOOL)removeObjectAtRandomPointWithAnimation:(GVExitAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error {
     return [self removeObjectAtPoint:[self randomTakenPoint] withAnimation:animation andWithAnimationDuration:duration error:error];
 }
 
-- (BOOL)removeObjectAtPoint:(CGPoint)point withAnimation:(GridExitAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error {
+- (BOOL)removeObjectAtPoint:(CGPoint)point withAnimation:(GVExitAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error {
     NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
     if (point.x > (_numberX - 1) || point.y > (_numberY - 1) || point.x <= -1 || point.y <= -1) {
         [errorDetail setValue:@"Point is out of range, or the Grid is empty" forKey:NSLocalizedDescriptionKey];
@@ -249,35 +249,35 @@
         return NO;
     }
     CGRect screen = [[UIScreen mainScreen] bounds];
-    if (animation == GridAnimationRandom) {
+    if (animation == GVAnimationRandom) {
         animation = arc4random_uniform(numberOfExitAnimations);
     }
     UIView *removeObject = [[_grid objectAtIndex:point.x] objectAtIndex:point.y];
     [self bringSubviewToFront:removeObject];
     [UIView animateWithDuration:duration animations:^ {
         switch (animation) {
-            case GridAnimationExitToLeft: {
+            case GVAnimationExitToLeft: {
                 removeObject.frame = CGRectMake(-1, removeObject.frame.origin.y, removeObject.frame.size.width, removeObject.frame.size.height);
                 break;
-            } case GridAnimationExitToRight: {
+            } case GVAnimationExitToRight: {
                 removeObject.frame = CGRectMake(screen.size.width+1, removeObject.frame.origin.y, removeObject.frame.size.width, removeObject.frame.size.height);
                 break;
-            } case GridAnimationExitToBelow: {
+            } case GVAnimationExitToBelow: {
                 removeObject.frame = CGRectMake(removeObject.frame.origin.x, screen.size.height+1, removeObject.frame.size.width, removeObject.frame.size.height);
                 break;
-            } case GridAnimationExitToAbove: {
+            } case GVAnimationExitToAbove: {
                 removeObject.frame = CGRectMake(removeObject.frame.origin.x, -1, removeObject.frame.size.width, removeObject.frame.size.height);
                 break;
-            } case GridAnimationExitToBottomLeft: {
+            } case GVAnimationExitToBottomLeft: {
                 removeObject.frame = CGRectMake(-1, screen.size.height+1, removeObject.frame.size.width, removeObject.frame.size.height);
                 break;
-            } case GridAnimationExitToBottonRight: {
+            } case GVAnimationExitToBottonRight: {
                 removeObject.frame = CGRectMake(screen.size.width+1, screen.size.height+1, removeObject.frame.size.width, removeObject.frame.size.height);
                 break;
-            } case GridAnimationExitToTopLeft: {
+            } case GVAnimationExitToTopLeft: {
                 removeObject.frame = CGRectMake(-1, -1, removeObject.frame.size.width, removeObject.frame.size.height);
                 break;
-            } case GridAnimationExitToTopRight: {
+            } case GVAnimationExitToTopRight: {
                 removeObject.frame = CGRectMake(screen.size.width+1, -1, removeObject.frame.size.width, removeObject.frame.size.height);
                 break;
             }

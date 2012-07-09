@@ -24,30 +24,30 @@
 #import <UIKit/UIKit.h>
 
 enum {
-    GridAnimationNone = 0,
-    GridAnimationEnterFromLeft = 1,
-    GridAnimationEnterFromRight = 2,
-    GridAnimationEnterFromBelow = 3,
-    GridAnimationEnterFromAbove = 4,
-    GridAnimationEnterFromBottomLeft = 5,
-    GridAnimationEnterFromBottonRight = 6,
-    GridAnimationEnterFromTopLeft = 7,
-    GridAnimationEnterFromTopRight = 8,
-    GridAnimationRandom = 9
+    GVAnimationNone = 0,
+    GVAnimationEnterFromLeft = 1,
+    GVAnimationEnterFromRight = 2,
+    GVAnimationEnterFromBelow = 3,
+    GVAnimationEnterFromAbove = 4,
+    GVAnimationEnterFromBottomLeft = 5,
+    GVAnimationEnterFromBottonRight = 6,
+    GVAnimationEnterFromTopLeft = 7,
+    GVAnimationEnterFromTopRight = 8,
+    GVAnimationRandom = 9
 };
-typedef NSUInteger GridEnterAnimation;
+typedef NSUInteger GVEnterAnimation;
 
 enum {
-    GridAnimationExitToLeft = 1,
-    GridAnimationExitToRight = 2,
-    GridAnimationExitToBelow = 3,
-    GridAnimationExitToAbove = 4,
-    GridAnimationExitToBottomLeft = 5,
-    GridAnimationExitToBottonRight = 6,
-    GridAnimationExitToTopLeft = 7,
-    GridAnimationExitToTopRight = 8
+    GVAnimationExitToLeft = 1,
+    GVAnimationExitToRight = 2,
+    GVAnimationExitToBelow = 3,
+    GVAnimationExitToAbove = 4,
+    GVAnimationExitToBottomLeft = 5,
+    GVAnimationExitToBottonRight = 6,
+    GVAnimationExitToTopLeft = 7,
+    GVAnimationExitToTopRight = 8
 };
-typedef NSUInteger GridExitAnimation;
+typedef NSUInteger GVExitAnimation;
 
 @interface GridView : UIView {
     int _numberX;
@@ -68,11 +68,11 @@ typedef NSUInteger GridExitAnimation;
 - (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point error:(NSError **)error;
 - (BOOL)insertObjectAtRandomPoint:(UIView *)object error:(NSError **)error;
 // Inserts object into the Grid, with default Duration of 0.3
-- (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point withAnimation:(GridEnterAnimation)animation error:(NSError **)error;
-- (BOOL)insertObjectAtRandomPoint:(UIView *)object withAnimation:(GridEnterAnimation)animation error:(NSError **)error;
+- (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point withAnimation:(GVEnterAnimation)animation error:(NSError **)error;
+- (BOOL)insertObjectAtRandomPoint:(UIView *)object withAnimation:(GVEnterAnimation)animation error:(NSError **)error;
 // Inserts object into the Grid, with custom Animation and Duration
-- (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point withAnimation:(GridEnterAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error;
-- (BOOL)insertObjectAtRandomPoint:(UIView *)object withAnimation:(GridEnterAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error;
+- (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point withAnimation:(GVEnterAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error;
+- (BOOL)insertObjectAtRandomPoint:(UIView *)object withAnimation:(GVEnterAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error;
 
 
 - (NSArray *)availablePoints;
@@ -82,10 +82,10 @@ typedef NSUInteger GridExitAnimation;
 - (BOOL)removeObjectAtPoint:(CGPoint)point error:(NSError **)error;
 - (BOOL)removeObjectAtRandomPoint:(NSError **)error;
 // Removes object from the Grid, with default Duration of 0.3
-- (BOOL)removeObjectAtPoint:(CGPoint)point withAnimation:(GridExitAnimation)animation error:(NSError **)error;
-- (BOOL)removeObjectAtRandomPointWithAnimation:(GridEnterAnimation)animation error:(NSError **)error;
+- (BOOL)removeObjectAtPoint:(CGPoint)point withAnimation:(GVExitAnimation)animation error:(NSError **)error;
+- (BOOL)removeObjectAtRandomPointWithAnimation:(GVExitAnimation)animation error:(NSError **)error;
 // Remove object from the Grid, with custom Animation and Duration
-- (BOOL)removeObjectAtPoint:(CGPoint)point withAnimation:(GridExitAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error;
-- (BOOL)removeObjectAtRandomPointWithAnimation:(GridEnterAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error;
+- (BOOL)removeObjectAtPoint:(CGPoint)point withAnimation:(GVExitAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error;
+- (BOOL)removeObjectAtRandomPointWithAnimation:(GVExitAnimation)animation andWithAnimationDuration:(NSTimeInterval)duration error:(NSError **)error;
 
 @end

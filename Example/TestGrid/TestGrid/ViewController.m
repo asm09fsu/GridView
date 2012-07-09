@@ -30,7 +30,7 @@
     double b = arc4random_uniform(255)/255.0;
     view.backgroundColor = [UIColor colorWithRed:r green:g blue:b alpha:1.0];
     NSError *error = nil;
-    if (![_brain insertObjectAtRandomPoint:view withAnimation:GridAnimationRandom error:&error]) {
+    if (![_brain insertObjectAtRandomPoint:view withAnimation:GVAnimationRandom error:&error]) {
         NSLog(@"%@", [error localizedDescription]);
     }
 }
@@ -45,7 +45,7 @@
 
 - (IBAction)remove:(id)sender {
     NSError *error = nil;
-    if (![_brain removeObjectAtRandomPointWithAnimation:GridAnimationRandom error:&error]) {
+    if (![_brain removeObjectAtRandomPointWithAnimation:GVAnimationRandom error:&error]) {
         NSLog(@"%@", [error localizedDescription]);
     }
 }
