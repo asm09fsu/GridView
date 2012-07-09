@@ -2,7 +2,7 @@
 
 ### Using Interface Builder
 ### Programmatically
-The use of GridView programmatically is relatively simple. First, add GridView.h/.m into your project, also import GridView.h into your $APPNAME-Prefix.pch file, alongside UIKit/Foundation. Then import GridView into the View you wish to use it in. You can then use the following as a reference to adding it to your project:
+The use of GridView programmatically is relatively simple. First, add GridView.h/.m and the QuartzCore Framework into your project, also import GridView.h into your $APPNAME-Prefix.pch file, alongside UIKit/Foundation. Since it is imported here, you do not need to import it into every View that will be using it. You can then use the following as a reference to adding it to your project:
 ```objective-c
 GridView *_gv = [[GridView alloc] initWithGridFrame:CGRectMake(0, 0, 320, 480) andBlockSize:CGSizeMake(40, 40)];
 [self addSubview:_gv];
