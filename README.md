@@ -1,11 +1,12 @@
 ## Installation/Operation Instructions
-#### Using Interface Builder
-#### Programmatically
+### Using Interface Builder
+### Programmatically
 The use of GridView programmatically is relatively simple. First, add GridView.h/.m into your project. Then import GridView into the View you wish to use it in. You can then use the following as a reference to adding it to your project:
 ```objective-c
 GridView *_gv = [[GridView alloc] initWithGridFrame:CGRectMake(0, 0, 320, 480) andBlockSize:CGSizeMake(40, 40)];
 [self addSubview:_gv];
 ```
+#### Inserting/Removing Blocks
 ## Copyright and Licensing
 Copyright © 2012, Alex Muller
 
