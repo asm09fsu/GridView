@@ -44,7 +44,7 @@ The above copyright notice and this permission notice shall be included in all c
  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Future Updates
-* Ability to add effects to added Views, such as rounded corners, or make the view grayscale.
+* Ability to add effects to added Views such as ~~rounded corners, or~~ make the view grayscale.
 
 ## Known Bugs
 * ~~Views are not properly centered on the y-coordinate~~
