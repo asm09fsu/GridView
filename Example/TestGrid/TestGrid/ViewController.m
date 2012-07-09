@@ -1,0 +1,64 @@
+//
+//  ViewController.m
+//  TestGrid
+//
+//  Created by Alex Muller on 7/6/12.
+//  Copyright (c) 2012 Alex Muller. All rights reserved.
+//
+
+#import "ViewController.h"
+#import "GridView.h"
+
+@interface ViewController () {
+    IBOutlet GridView *_brain;
+}
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [_brain setBlockSize:CGSizeMake(60, 40)];
+}
+
+- (IBAction)AddView {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    double r = arc4random_uniform(255)/255.0;
+    double g = arc4random_uniform(255)/255.0;
+    double b = arc4random_uniform(255)/255.0;
+    view.backgroundColor = [UIColor colorWithRed:r green:g blue:b alpha:1.0];
+    NSError *error = nil;
+    if (![_brain insertObjectAtRandomPoint:view withAnimation:GridAnimationRandom error:&error]) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
+}
+
+- (IBAction)available:(id)sender {
+    NSLog(@"%@", [_brain availablePoints]);
+}
+
+- (IBAction)taken:(id)sender {
+    NSLog(@"%@", [_brain takenPoints]);
+}
+
+- (IBAction)remove:(id)sender {
+    NSError *error = nil;
+    if (![_brain removeObjectAtRandomPointWithAnimation:GridAnimationRandom error:&error]) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+@end
