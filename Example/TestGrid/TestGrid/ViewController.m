@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "GridView.h"
+//#import "GridView.h"
 
 @interface ViewController () {
     IBOutlet GridView *_brain;
@@ -20,16 +20,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [_brain setBlockSize:GVSquareMake(40)];
+    [_brain setBlockSize:GVSquareMake(60)];
 }
 
 - (IBAction)AddView {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
     double r = arc4random_uniform(255)/255.0;
     double g = arc4random_uniform(255)/255.0;
     double b = arc4random_uniform(255)/255.0;
     view.backgroundColor = [UIColor colorWithRed:r green:g blue:b alpha:1.0];
+    UIImageView *iV = [[UIImageView alloc] initWithFrame:view.frame];
+    iV.image = [UIImage imageNamed:@"sloth"];
+    [view addSubview:iV];
     NSError *error = nil;
+    [_brain setBlockType:arc4random_uniform(4)];
     if (![_brain insertObjectAtRandomPoint:view withAnimation:GVAnimationRandom error:&error]) {
         NSLog(@"%@", [error localizedDescription]);
     }
