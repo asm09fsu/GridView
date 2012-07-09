@@ -28,6 +28,7 @@
 // Dont forget the number includes 0
 #define numberOfEnterAnimations 9 
 #define numberOfExitAnimations 9
+#define numberOfBlockTypes 4
 
 #define defaultDuration 0.3
 
@@ -179,6 +180,9 @@
     if (animation == GVAnimationRandom) {
         animation = arc4random_uniform(numberOfEnterAnimations);
     }
+    if (_blockType == GVBlockTypeRandom) {
+        _blockType = arc4random_uniform(numberOfBlockTypes);
+    }
     switch (_blockType) {
         case GVBlockTypeRoundedEdges: {
             object.layer.cornerRadius = object.frame.size.width / 8.0;
@@ -192,7 +196,8 @@
             object.layer.cornerRadius = 0;
             [self drawTriangleOnObject:object];
             break;
-        } 
+        } default:
+            break;
     }
     switch (animation) {
         case GVAnimationNone: {
@@ -222,7 +227,8 @@
         } case GVAnimationEnterFromTopRight: {
             object.frame = CGRectMake(screen.size.width+1, -1, object.frame.size.width, object.frame.size.height);
             break;
-        }
+        } default:
+            break;
     }
     [[_grid objectAtIndex:point.x] setObject:object atIndex:point.y];
     [self addSubview:object];

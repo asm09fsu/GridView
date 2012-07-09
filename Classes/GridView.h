@@ -24,7 +24,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-enum {
+typedef enum {
     GVAnimationNone = 0,
     GVAnimationEnterFromLeft = 1,
     GVAnimationEnterFromRight = 2,
@@ -35,10 +35,9 @@ enum {
     GVAnimationEnterFromTopLeft = 7,
     GVAnimationEnterFromTopRight = 8,
     GVAnimationRandom = 9
-};
-typedef NSUInteger GVEnterAnimation;
+} GVEnterAnimation;
 
-enum {
+typedef enum {
     GVAnimationExitToLeft = 1,
     GVAnimationExitToRight = 2,
     GVAnimationExitToBelow = 3,
@@ -47,16 +46,15 @@ enum {
     GVAnimationExitToBottonRight = 6,
     GVAnimationExitToTopLeft = 7,
     GVAnimationExitToTopRight = 8
-};
-typedef NSUInteger GVExitAnimation;
+} GVExitAnimation;
 
-enum {
+typedef enum {
     GVBlockTypeDefault = 0,
     GVBlockTypeRoundedEdges = 1,
-    GVBlockTypeCircle = 2,
-    GVBlockTypeTriangle = 3
-};
-typedef NSUInteger GVBlockType;
+    GVBlockTypeCircle = 2,  // Will only work if blockSize has equal width/height
+    GVBlockTypeTriangle = 3,
+    GVBlockTypeRandom = 4
+} GVBlockType;
 
 struct GVBlock {
     CGFloat width;
@@ -70,6 +68,8 @@ typedef struct CGSize GVBlock;
     int _numberY;
     double _remainingSizeY;
     NSMutableArray *_grid;
+    
+    UIDeviceOrientation _currentOrientation;
 }
 
 @property (nonatomic) CGSize gridSize;
