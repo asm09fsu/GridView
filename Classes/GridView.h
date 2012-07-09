@@ -22,6 +22,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 enum {
     GVAnimationNone = 0,
@@ -49,6 +50,14 @@ enum {
 };
 typedef NSUInteger GVExitAnimation;
 
+enum {
+    GVBlockTypeDefault = 0,
+    GVBlockTypeRoundedEdges = 1,
+    GVBlockTypeCircle = 2,
+    GVBlockTypeTriangle = 3
+};
+typedef NSUInteger GVBlockType;
+
 struct GVBlock {
     CGFloat width;
     CGFloat height;
@@ -64,7 +73,8 @@ typedef struct CGSize GVBlock;
 }
 
 @property (nonatomic) CGSize gridSize;
-@property (nonatomic) CGSize blockSize;
+@property (nonatomic) GVBlock blockSize;
+@property (nonatomic) GVBlockType blockType;
 
 CG_INLINE GVBlock
 GVSquareMake(CGFloat width) {
@@ -85,6 +95,7 @@ GVRectMake(CGFloat width, CGFloat height) {
 - (id)initWithGridFrame:(CGRect)frame andBlockSize:(GVBlock)blockSize;
 
 - (void)setBlockSize:(GVBlock)blockSize;
+- (void)setBlockType:(GVBlockType)blockType;
 
 // Inserts object into the Grid, with GridAnimationNone and Duration 0.0
 - (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point error:(NSError **)error;

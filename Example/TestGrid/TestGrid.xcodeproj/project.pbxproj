@@ -16,6 +16,8 @@
 		AE81AF9315A75AB500B95353 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE81AF9115A75AB500B95353 /* MainStoryboard.storyboard */; };
 		AE81AF9615A75AB500B95353 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE81AF9515A75AB500B95353 /* ViewController.m */; };
 		AEA4947F15AA5BD700C479E8 /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA4947E15AA5BD700C479E8 /* GridView.m */; };
+		AEA4C85415AA9B7100A498C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA4C85315AA9B7100A498C9 /* QuartzCore.framework */; };
+		AEA4C85715AAAC4000A498C9 /* sloth.png in Resources */ = {isa = PBXBuildFile; fileRef = AEA4C85615AAAC4000A498C9 /* sloth.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		AE81AF9515A75AB500B95353 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AEA4947D15AA5BD700C479E8 /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
 		AEA4947E15AA5BD700C479E8 /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
+		AEA4C85315AA9B7100A498C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AEA4C85615AAAC4000A498C9 /* sloth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sloth.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA4C85415AA9B7100A498C9 /* QuartzCore.framework in Frameworks */,
 				AE81AF8015A75AB500B95353 /* UIKit.framework in Frameworks */,
 				AE81AF8215A75AB500B95353 /* Foundation.framework in Frameworks */,
 				AE81AF8415A75AB500B95353 /* CoreGraphics.framework in Frameworks */,
@@ -70,6 +75,7 @@
 		AE81AF7E15A75AB500B95353 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AEA4C85315AA9B7100A498C9 /* QuartzCore.framework */,
 				AE81AF7F15A75AB500B95353 /* UIKit.framework */,
 				AE81AF8115A75AB500B95353 /* Foundation.framework */,
 				AE81AF8315A75AB500B95353 /* CoreGraphics.framework */,
@@ -85,6 +91,7 @@
 				AE81AF9115A75AB500B95353 /* MainStoryboard.storyboard */,
 				AE81AF9415A75AB500B95353 /* ViewController.h */,
 				AE81AF9515A75AB500B95353 /* ViewController.m */,
+				AEA4C85815AAAC4300A498C9 /* Test Images */,
 				AEA4947C15AA5BD700C479E8 /* Classes */,
 				AE81AF8615A75AB500B95353 /* Supporting Files */,
 			);
@@ -110,6 +117,14 @@
 			);
 			name = Classes;
 			path = ../../../Classes;
+			sourceTree = "<group>";
+		};
+		AEA4C85815AAAC4300A498C9 /* Test Images */ = {
+			isa = PBXGroup;
+			children = (
+				AEA4C85615AAAC4000A498C9 /* sloth.png */,
+			);
+			name = "Test Images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +180,7 @@
 			files = (
 				AE81AF8A15A75AB500B95353 /* InfoPlist.strings in Resources */,
 				AE81AF9315A75AB500B95353 /* MainStoryboard.storyboard in Resources */,
+				AEA4C85715AAAC4000A498C9 /* sloth.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

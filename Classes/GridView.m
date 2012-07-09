@@ -42,9 +42,11 @@
 
 @synthesize gridSize = _gridSize;
 @synthesize blockSize = _blockSize;
+@synthesize blockType = _blockType;
 
 - (void)awakeFromNib {
     self.gridSize = self.frame.size;
+    self.blockType = GVBlockTypeDefault;
 }
 
 - (void)setBlockSize:(GVBlock)blockSize {
@@ -63,11 +65,16 @@
     }
 }
 
+- (void)setBlockType:(GVBlockType)blockType {
+    _blockType = blockType;
+}
+
 - (id)initWithGridFrame:(CGRect)frame andBlockSize:(GVBlock)blockSize {
     self = [super initWithFrame:frame];
     if (self) {
         self.gridSize = frame.size;
         self.blockSize = blockSize;
+        self.blockType = GVBlockTypeDefault;
         _numberX = _gridSize.width / blockSize.width;
         _numberY = _gridSize.height / blockSize.height;
         _remainingSizeX = _gridSize.width - (_blockSize.width * _numberX);
@@ -171,6 +178,21 @@
     CGRect screen = [[UIScreen mainScreen] bounds];
     if (animation == GVAnimationRandom) {
         animation = arc4random_uniform(numberOfEnterAnimations);
+    }
+    switch (_blockType) {
+        case GVBlockTypeRoundedEdges: {
+            object.layer.cornerRadius = object.frame.size.width / 8.0;
+            object.clipsToBounds = YES;
+            break;
+        } case GVBlockTypeCircle: {
+            object.layer.cornerRadius = object.frame.size.width / 2.0;
+            object.clipsToBounds = YES;
+            break;
+        } case GVBlockTypeTriangle: {
+            object.layer.cornerRadius = 0;
+            [self drawTriangleOnObject:object];
+            break;
+        } 
     }
     switch (animation) {
         case GVAnimationNone: {
@@ -290,6 +312,19 @@
     }];
     
     return YES;
+}
+
+- (void)drawTriangleOnObject:(UIView *)object {
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path,NULL,object.frame.size.width/2.0,0.0);
+    CGPathAddLineToPoint (path, NULL,object.frame.size.width, object.frame.size.height);
+    CGPathAddLineToPoint (path, NULL,0.0f, object.frame.size.height);
+    CGPathCloseSubpath(path);
+    
+    CAShapeLayer * mask = [CAShapeLayer layer];
+    mask.path = path;
+    
+    [object.layer setMask:mask];
 }
 
 @end
