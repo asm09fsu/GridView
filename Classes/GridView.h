@@ -45,6 +45,10 @@ typedef NSUInteger GridExitAnimation;
 @property (nonatomic) CGSize gridSize;
 @property (nonatomic) CGSize blockSize;
 
+- (id)initWithGridFrame:(CGRect)frame andBlockSize:(CGSize)blockSize;
+
+- (void)setBlockSize:(CGSize)blockSize;
+
 // Inserts object into the Grid, with GridAnimationNone and Duration 0.0
 - (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point error:(NSError **)error;
 - (BOOL)insertObjectAtRandomPoint:(UIView *)object error:(NSError **)error;
