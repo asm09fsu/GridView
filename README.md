@@ -11,5 +11,5 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 * Except as contained in this notice, the name(s) of (the) Author shall not be used in advertising or otherwise to promote the sale, use or other dealings in this Software without prior written authorization from (the )Author.
 
 ## Known Bugs
-* **[FIXED]** Views are not properly centered on the y-coordinate
+* ~~Views are not properly centered on the y-coordinate~~
 * **[FIXED]** Views are not properly centered on the x-coordinate
