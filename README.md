@@ -7,6 +7,16 @@ GridView *_gv = [[GridView alloc] initWithGridFrame:CGRectMake(0, 0, 320, 480) a
 [self addSubview:_gv];
 ```
 ### Inserting/Removing Blocks
+#### Inserting
+There are many functions defined to allow for a multitude of customization when it comes to how you would like to add a view to the screen and into the Grid.
+#####-insertObject:atPoint:error:
+#####-insertObjectAtRandomPoint:error:
+#####-insertObject:atPoint:withAnimation:error:
+#####-insertObjectAtRandomPoint:withAnimation:error:
+#####-insertObject:atPoint:withAnimation:andWithAnimationDuration:error:
+#####-insertObjectAtRandomPoint:withAnimation:andWithAnimationDuration:error:
+
+#### Removing
 
 ## Copyright and Licensing
 Copyright © 2012, Alex Muller
