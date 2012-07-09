@@ -49,3 +49,4 @@ The above copyright notice and this permission notice shall be included in all c
 ## Known Bugs
 * ~~Views are not properly centered on the y-coordinate~~
 * ~~Views are not properly centered on the x-coordinate~~
+* GridView does not properly adjust when rotating (Not sure if this can be fixed)
