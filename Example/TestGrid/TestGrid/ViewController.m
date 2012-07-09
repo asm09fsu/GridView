@@ -20,20 +20,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [_brain setBlockSize:GVSquareMake(60)];
+    [_brain setBlockSize:GVSquareMake(44)];
 }
 
 - (IBAction)AddView {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     double r = arc4random_uniform(255)/255.0;
     double g = arc4random_uniform(255)/255.0;
     double b = arc4random_uniform(255)/255.0;
     view.backgroundColor = [UIColor colorWithRed:r green:g blue:b alpha:1.0];
-    UIImageView *iV = [[UIImageView alloc] initWithFrame:view.frame];
-    iV.image = [UIImage imageNamed:@"sloth"];
-    [view addSubview:iV];
+//    UIImageView *iV = [[UIImageView alloc] initWithFrame:view.frame];
+//    iV.image = [UIImage imageNamed:@"sloth"];
+//    [view addSubview:iV];
     NSError *error = nil;
-    [_brain setBlockType:arc4random_uniform(4)];
+    [_brain setBlockType:GVBlockTypeRandom];
     if (![_brain insertObjectAtRandomPoint:view withAnimation:GVAnimationRandom error:&error]) {
         NSLog(@"%@", [error localizedDescription]);
     }
@@ -62,7 +62,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return YES;
 }
 
 @end
