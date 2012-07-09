@@ -1,11 +1,23 @@
 ## Installation/Operation Instructions
+
 ### Using Interface Builder
 ### Programmatically
-The use of GridView programmatically is relatively simple. First, add GridView.h/.m into your project. Then import GridView into the View you wish to use it in. You can then use the following as a reference to adding it to your project:
+The use of GridView programmatically is relatively simple. First, add GridView.h/.m into your project, also import GridView.h into your $APPNAME-Prefix.pch file, alongside UIKit/Foundation. Then import GridView into the View you wish to use it in. You can then use the following as a reference to adding it to your project:
 ```objective-c
 GridView *_gv = [[GridView alloc] initWithGridFrame:CGRectMake(0, 0, 320, 480) andBlockSize:CGSizeMake(40, 40)];
 [self addSubview:_gv];
 ```
+An alternative is to use the provided GVBlock helper functions. These are wrappers around the CGSize struct, and just free up a small amount of space when programming:
+```objective-c
+GridView *_gv = [[GridView alloc] initWithGridFrame:CGRectMake(0, 0, 320, 480) andBlockSize:GVSquareMake(40)];
+[self addSubview:_gv];
+```
+-- or --
+```objective-c
+GridView *_gv = [[GridView alloc] initWithGridFrame:CGRectMake(0, 0, 320, 480) andBlockSize:GVRectMake(40, 40)];
+[self addSubview:_gv];
+```
+
 ### Inserting/Removing Blocks
 #### Inserting
 There are many functions defined to allow for a multitude of customization when it comes to how you would like to add a view to the screen and into the Grid.
