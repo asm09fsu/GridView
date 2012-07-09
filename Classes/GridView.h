@@ -49,6 +49,12 @@ enum {
 };
 typedef NSUInteger GVExitAnimation;
 
+struct GVBlock {
+    CGFloat width;
+    CGFloat height;
+};
+typedef struct CGSize GVBlock;
+
 @interface GridView : UIView {
     int _numberX;
     double _remainingSizeX;
@@ -60,9 +66,25 @@ typedef NSUInteger GVExitAnimation;
 @property (nonatomic) CGSize gridSize;
 @property (nonatomic) CGSize blockSize;
 
-- (id)initWithGridFrame:(CGRect)frame andBlockSize:(CGSize)blockSize;
+CG_INLINE GVBlock
+GVSquareMake(CGFloat width) {
+    GVBlock block;
+    block.width = width;
+    block.height = width;
+    return block;
+}
 
-- (void)setBlockSize:(CGSize)blockSize;
+CG_INLINE GVBlock
+GVRectMake(CGFloat width, CGFloat height) {
+    GVBlock block;
+    block.width = width;
+    block.height = height;
+    return block;
+}
+
+- (id)initWithGridFrame:(CGRect)frame andBlockSize:(GVBlock)blockSize;
+
+- (void)setBlockSize:(GVBlock)blockSize;
 
 // Inserts object into the Grid, with GridAnimationNone and Duration 0.0
 - (BOOL)insertObject:(UIView *)object atPoint:(CGPoint)point error:(NSError **)error;

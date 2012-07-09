@@ -20,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [_brain setBlockSize:CGSizeMake(60, 40)];
+    [_brain setBlockSize:GVSquareMake(40)];
 }
 
 - (IBAction)AddView {

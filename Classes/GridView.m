@@ -23,7 +23,7 @@
 
 #import "GridView.h"
 
-#define determinedBlockSize CGSizeMake(self.blockSize.width, self.blockSize.height)
+#define determinedBlockSize GVRectMake(self.blockSize.width, self.blockSize.height)
 
 // Dont forget the number includes 0
 #define numberOfEnterAnimations 9 
@@ -47,7 +47,7 @@
     self.gridSize = self.frame.size;
 }
 
-- (void)setBlockSize:(CGSize)blockSize {
+- (void)setBlockSize:(GVBlock)blockSize {
     _blockSize = blockSize;
     _numberX = _gridSize.width / blockSize.width;
     _numberY = _gridSize.height / blockSize.height;
@@ -63,7 +63,7 @@
     }
 }
 
-- (id)initWithGridFrame:(CGRect)frame andBlockSize:(CGSize)blockSize {
+- (id)initWithGridFrame:(CGRect)frame andBlockSize:(GVBlock)blockSize {
     self = [super initWithFrame:frame];
     if (self) {
         self.gridSize = frame.size;
